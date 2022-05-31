@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" href="./assets/favicon.74be3e28.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>在线PNG转ICO</title>
+		<script type="module" crossorigin src="./assets/index.b5a030c0.js"></script>
+		<link rel="modulepreload" href="./assets/vendor.00999e23.js">
+		<link rel="stylesheet" href="./assets/index.ae9f48a2.css">
+	</head>
+	<style>
+		body{
+			font-family: sans-serif !important;
+		}
+		
+		#app .header {
+			display: flex;
+			align-items: center;
+			/* margin-bottom: 28px; */
+			text-align: center;
+			margin: 0px auto 10px;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			font-size: 26px;
+		}
+
+		.main-swap {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.operation #file_wrap {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+
+		}
+
+		.operation #file_wrap .file_btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0;
+			width: 256px;
+			height: 42px;
+			border: none;
+			color: #fff;
+			border-radius: 10px;
+			background-color: #ff5869;
+			cursor: pointer;
+			font-size: 16px;
+			transition: .2s;
+		}
+
+		.operation #file_wrap .file_btn:hover {
+			background-color: #ff4552;
+		}
+
+		.operation #file_wrap .file_name {
+			margin: 10px auto !important;
+			width: 256px;
+			background: rgba(0, 0, 0, 0.02);
+			color: rgba(0, 0, 0, 0.3);
+			overflow: hidden;
+			text-align: center;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			height: 42px;
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			font-size: 16px;
+		}
+
+		.operation .preview {
+			display: flex;
+			align-items: center;
+			margin: auto;
+			font-size: 16px;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+		}
+
+		.operation .preview #canvas {
+			margin: 10px auto 0 !important;
+		}
+
+		.operation canvas {
+			width: 256px;
+			height: 256px;
+			background: rgba(0, 0, 0, 0.02);
+			border-radius: 10px;
+		}
+
+		.converter_text {
+			padding-top: 10px;
+			font-size: 16px;
+			border: none;
+			width: 256px;
+			text-align: center;
+		}
+
+		.pre-title {
+			width: 256px;
+			height: 42px;
+			background: rgba(0, 0, 0, 0.02);
+			border-radius: 10px;
+			color: rgba(0, 0, 0, 0.7);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 16px;
+		}
+
+		.text-box {
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			width: 256px;
+		}
+
+		.down_list {
+			margin: 10px 0 0;
+			padding: 1px;
+			height: 40px;
+			width: 256px;
+			display: flex;
+			flex-direction: column;
+			background-color: rgba(0, 0, 0, 0.02);
+			border-radius: 10px;
+			overflow: hidden;
+
+		}
+
+		.down_list li {
+			padding: 9px 0;
+			font-size: 16px;
+			width: 256px;
+			position: relative;
+			text-align: center;
+		}
+
+		.down_list li:hover {
+			background: transparent;
+		}
+
+		.down_list p {
+			width: 256px;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: flex-start;
+			padding-left: 14px;
+
+		}
+
+		.down_list a {
+			position: absolute;
+			top: 3px;
+			right: 3px;
+			background: #ff5869;
+			border-radius: 6px;
+			height: 34px;
+			width: 70px;
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+			text-decoration: none;
+			font-size: 16px;
+			transition: .2s;
+		}
+
+		.down_list a:hover {
+			background: #ff4552;
+		}
+
+
+
+		.footer {
+			margin: 10px 0 0;
+			padding: 0;
+			height: 42px;
+			width: 256px;
+			display: flex;
+			flex-direction: row;
+			background-color: rgba(0, 0, 0, 0.02);
+			border-radius: 10px;
+			overflow: hidden;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.footer span {
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			font-size: 16px;
+			color: rgba(0, 0, 0, 0.7);
+			margin: 0 5px;
+		}
+
+		.footer a {
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+			font-size: 16px;
+			color: rgba(0, 0, 0, 0.7);
+			margin: 0 5px;
+			font-weight: bold;
+		}
+
+		@media screen and (min-width: 393px) {
+			.operation #file_wrap .file_btn {
+				width: 360px;
+				height: 42px;
+			}
+
+			.operation #file_wrap .file_name {
+				width: 360px;
+				height: 42px;
+			}
+
+			.operation canvas {
+				width: 360px;
+				height: 360px;
+			}
+
+			.pre-title {
+				width: 360px;
+				height: 42px;
+			}
+
+			.down_list {
+				width: 360px;
+			}
+
+			.down_list p {
+				align-items: flex-start;
+				padding-left: 12px;
+			}
+
+			.converter_text {
+				width: auto;
+			}
+
+			.footer {
+				width: 360px;
+			}
+
+			.down_list li {
+				padding: 9px 0;
+				font-size: 16px;
+				transition: .2s;
+				width: 360px;
+				position: relative;
+				text-align: center;
+			}
+
+			.down_list p {
+				width: 100%;
+				align-items: center;
+				padding: 0;
+
+			}
+
+		}
+	</style>
+	<body>
+		<div id="app">
+			<div class="main-swap">
+				<h1 class="header">
+					在线PNG转ICO
+				</h1>
+				<div class="operation">
+					<input type="file" accept="image/png" id="file" multiple />
+					<div id="file_wrap">
+						<p class="file_btn">选择文件</p>
+						<p class="file_name">未选择文件</p>
+					</div>
+					<div class="preview">
+						<span class="pre-title">效果预览</span>
+						<canvas id="canvas" width="256" height="256"></canvas>
+					</div>
+				</div>
+				<div class="text-box">
+					<div class="converter_text">
+						<span class="pre-title">转换结果</span>
+					</div>
+					<ul class="down_list" ></ul>
+					<div class="footer"><span>请使用方形图片</span><a href="https://dadio.cc/website" target="_blank">更多工具</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+
+</html>
